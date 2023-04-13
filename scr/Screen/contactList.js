@@ -79,6 +79,9 @@ const ContactList = ({ navigation }) => {
             ) : (
                 <FlatList
                     data={users}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    alwaysBounceVertical
                     keyExtractor={({ id }) => id}
                     renderItem={({ item }) => (
                         <>
@@ -87,8 +90,6 @@ const ContactList = ({ navigation }) => {
                                     navigation.navigate('DetailContact', { item });
                                 }}
                             >
-
-
                                 <Image
                                     style={{
                                         height: 50,
@@ -96,13 +97,11 @@ const ContactList = ({ navigation }) => {
                                         borderRadius: 100,
                                         flexDirection: 'row',
                                         top: 10,
-                                        borderColor: 'black', 
-                                        borderWidth:0.5
+                                        borderColor: 'black',
+                                        borderWidth: 0.5
                                     }}
                                     source={{ uri: item.image }}
                                 />
-
-
                                 <Text
                                     style={{
                                         fontSize: RFPercentage(2),
@@ -139,12 +138,15 @@ const ContactList = ({ navigation }) => {
 
                                     </Text>
                                 </View>
-                                <View style={{ height: 1, 
-                                    width: "100%", 
-                                    backgroundColor: '#D3D3D3', 
-                                    marginTop: 3 }}>
-                                        <Text></Text>
-                                        </View>
+                                <View style={{
+                                    height: 1,
+                                    width: "100%",
+                                    backgroundColor: '#D3D3D3',
+                                    marginTop: 5,
+                                    marginBottom: -5,
+                                }}>
+                                    <Text></Text>
+                                </View>
 
                             </TouchableOpacity>
 
