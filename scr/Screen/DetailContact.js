@@ -5,48 +5,71 @@
 /* eslint-disable prettier/prettier */
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useState } from 'react';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 const DetailContact = ({ navigation, route }) => {
-    const { first_name, last_name, email, avatar } = route.params.item;
-  return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+    const { firstName, lastName, email, image, maidenName, phone } = route.params.item;
+    return (
+        <View style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
 
-<View>
-        <View
-          style={{
-            width: '100%',
-            height: 60,
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingLeft: 20,
-          }}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}>
-            <Image
-              source={require('../images/back.png')}
-              style={{
-                width: 24,
-                height: 24,
-                tintColor: '#000',
-                marginBottom: 0,
-                marginLeft: 30
-              }}
-            />
-          </TouchableOpacity>
-          <View>
-          <Text style={{
-            fontSize: 25,
-            color: '#333300',
-            textAlign: 'center',
-            fontWeight: "bold",
-          }}>Profile</Text>
-          </View>
-          </View>
-          </View>
-    </View>
-  );
+            <View>
+                <View style={{
+                    backgroundColor: 'white',
+                    borderRadius: 20,
+                    padding: 70,
+                    marginTop: 90,
+                    alignItems: 'center',
+                    // shadowColor: '#000',
+                    // shadowOffset: {
+                    //     width: 0,
+                    //     height: 2,
+                    //   },
+                    //   shadowOpacity: 0.25,
+                    //   shadowRadius: 4,
+                    //   elevation: 5,
+                }}>
+                    <View>
+
+                        <Image source={{ uri: image }}
+                            style={{
+                                width: 100,
+                                height: 100,
+                                borderRadius: 100,
+                                alignSelf: 'center',
+                                marginTop: -130,
+                            }} />
+                    </View>
+                    <Text style={{
+                        fontSize: RFPercentage(2.5),
+                        color: '#000',
+                        textAlign: 'center',
+                        marginLeft: 0,
+                        marginTop: -15,
+                        // fontWeight: "bold"
+                    }}>{firstName} {maidenName} {lastName}</Text>
+                    <Text>Mobile {phone}</Text>
+                </View>
+                <View style={{
+                    backgroundColor: 'white',
+                    borderRadius: 20,
+                    padding: 30,
+                    borderColor: '#ccc',
+                    marginTop: 90,
+                    alignItems: 'center',
+                    // shadowColor: '#000',
+                    // shadowOffset: {
+                    //     width: 0,
+                    //     height: 2,
+                    //   },
+                    //   shadowOpacity: 0.25,
+                    //   shadowRadius: 4,
+                    //   elevation: 1,
+                }}>
+                    <Text>Hello</Text>
+                </View>
+            </View>
+        </View>
+    );
 };
 
 export default DetailContact;

@@ -82,7 +82,7 @@ const ContactList = ({ navigation }) => {
                     data={users}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
-                    alwaysBounceVertical
+                    // alwaysBounceVertical={true}
                     keyExtractor={({ id }) => id}
                     renderItem={({ item }) => (
                         <>
@@ -99,7 +99,7 @@ const ContactList = ({ navigation }) => {
                                         flexDirection: 'row',
                                         top: 10,
                                         borderColor: 'black',
-                                        borderWidth: 0.5
+                                        borderWidth: 0.5,
                                     }}
                                     source={{ uri: item.image }}/>
                                 <Text
