@@ -35,8 +35,13 @@ const ContactList = ({ navigation }) => {
         getdata();
     }, []);
     return (
-        <View style={{ flex: 1, padding: 24, backgroundColor: '#fff' }}>
-            <View
+        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+            <View style={{padding:5}}>
+                <Text style={{color:'#000', textAlign:'center', fontSize: RFPercentage(3),}}>
+                    Contact List
+                </Text>
+            </View>
+            {/* <View
                 style={{
                     // width: '100%',
                     // height: 60,
@@ -44,36 +49,32 @@ const ContactList = ({ navigation }) => {
                     height: hp('10%'),
                     flexDirection: 'row',
                     alignItems: 'center',
-                    paddingLeft: 20,
+                    
                 }}>
-
                 <View style={{
-
-                    // justifyContent:'center',
-                    // alignContent:'center',
-                    // alignItems:'center',
+                    flexDirection:'row',
+                    justifyContent:'center',
+                    alignContent:'center',
+                    alignItems:'center',
                     // textAlign: 'center',
-
                 }}>
                     <Text
                         style={{
-                            fontSize: RFPercentage(3),
+                            // fontSize: RFPercentage(3),
                             // fontSize: 25,
                             color: '#000',
                             // justifyContent:'center',
                             // alignContent:'center',
                             // alignItems:'center',
                             // textAlign: 'center',
-                            marginLeft: 90,
-                            marginTop: -50,
-                            fontWeight: 'bold',
+                            // marginLeft: 90,
+                            // marginTop: -50,
+                            // fontWeight: 'bold',
                         }}>
                         Contact List
                     </Text>
                 </View>
-
-
-            </View>
+            </View> */}
             {isLoading ? (
                 <ActivityIndicator />
             ) : (
@@ -88,8 +89,8 @@ const ContactList = ({ navigation }) => {
                             <TouchableOpacity
                                 onPress={() => {
                                     navigation.navigate('DetailContact', { item });
-                                }}
-                            >
+                                }}>
+                                    <View style={{marginLeft:12, marginRight:20}}>
                                 <Image
                                     style={{
                                         height: 50,
@@ -100,8 +101,7 @@ const ContactList = ({ navigation }) => {
                                         borderColor: 'black',
                                         borderWidth: 0.5
                                     }}
-                                    source={{ uri: item.image }}
-                                />
+                                    source={{ uri: item.image }}/>
                                 <Text
                                     style={{
                                         fontSize: RFPercentage(2),
@@ -113,16 +113,13 @@ const ContactList = ({ navigation }) => {
                                         marginLeft: 70,
                                         marginBottom: -22,
                                         // color:'#000',
-                                    }}
-                                >
+                                    }}>
                                     {item.firstName} {item.lastName}
                                 </Text>
-
                                 <View style={{
                                     width: wp('80%'),
                                     height: hp('1%'),
                                 }}>
-
                                     <Text style={{
                                         fontSize: RFPercentage(1.7),
                                         // fontSize: 20,
@@ -135,7 +132,6 @@ const ContactList = ({ navigation }) => {
                                         // color:'#000',
                                     }}>
                                         {item.email}
-
                                     </Text>
                                 </View>
                                 <View style={{
@@ -147,10 +143,8 @@ const ContactList = ({ navigation }) => {
                                 }}>
                                     <Text></Text>
                                 </View>
-
+                                </View>
                             </TouchableOpacity>
-
-
                         </>
                     )}
                 />
