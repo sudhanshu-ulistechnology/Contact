@@ -6,6 +6,7 @@
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useState } from 'react';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import Icon from 'react-native-vector-icons/Feather';
 
 const DetailContact = ({ navigation, route }) => {
     const { firstName, lastName, email, image, maidenName, phone } = route.params.item;
@@ -48,6 +49,12 @@ const DetailContact = ({ navigation, route }) => {
                         // fontWeight: "bold"
                     }}>{firstName} {maidenName} {lastName}</Text>
                     <Text>Mobile {phone}</Text>
+                    <View>
+          <TouchableOpacity onPress={() => { }}>
+            <Icon name="phone-call" size={30} color="#ffd369" />
+          </TouchableOpacity>
+          {/* <Icon name="phone" size={30} color="#000"/> */}
+          </View>
                 </View>
                 <View style={{
                     backgroundColor: 'white',
