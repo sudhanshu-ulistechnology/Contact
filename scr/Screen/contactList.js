@@ -41,40 +41,6 @@ const ContactList = ({ navigation }) => {
                     Contact List
                 </Text>
             </View>
-            {/* <View
-                style={{
-                    // width: '100%',
-                    // height: 60,
-                    width: wp('80%'),
-                    height: hp('10%'),
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    
-                }}>
-                <View style={{
-                    flexDirection:'row',
-                    justifyContent:'center',
-                    alignContent:'center',
-                    alignItems:'center',
-                    // textAlign: 'center',
-                }}>
-                    <Text
-                        style={{
-                            // fontSize: RFPercentage(3),
-                            // fontSize: 25,
-                            color: '#000',
-                            // justifyContent:'center',
-                            // alignContent:'center',
-                            // alignItems:'center',
-                            // textAlign: 'center',
-                            // marginLeft: 90,
-                            // marginTop: -50,
-                            // fontWeight: 'bold',
-                        }}>
-                        Contact List
-                    </Text>
-                </View>
-            </View> */}
             {isLoading ? (
                 <ActivityIndicator />
             ) : (
