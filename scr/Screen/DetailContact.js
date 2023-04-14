@@ -3,7 +3,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet, Alert, Modal } from 'react-native';
 import { useState } from 'react';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,9 +11,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const DetailContact = ({ navigation, route }) => {
     const { firstName, lastName, email, image, maidenName, phone } = route.params.item;
+    const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
-
+            
             <View>
                 <View style={{
                     backgroundColor: 'white',
@@ -22,36 +23,14 @@ const DetailContact = ({ navigation, route }) => {
                     paddingBottom: 25,
                     marginTop: 90,
                     alignItems: 'center',
-                    // shadowColor: '#000',
-                    // shadowOffset: {
-                    //     width: 0,
-                    //     height: 2,
-                    //   },
-                    //   shadowOpacity: 0.25,
-                    //   shadowRadius: 4,
-                    //   elevation: 5,
                 }}>
                     <View>
 
                         <Image source={{ uri: image }}
-                            style={{
-                                width: 100,
-                                height: 100,
-                                alignSelf: 'center',
-                                marginTop: -130,
-                                borderColor: 'black',
-                                borderRadius: 100,
-                                borderWidth: 0.1,
-                            }} />
+                            style={styles.profile} />
                     </View>
-                    <Text style={{
-                        fontSize: RFPercentage(2.5),
-                        color: '#000',
-                        textAlign: 'center',
-                        marginLeft: 0,
-                        marginTop: -15,
-                        // fontWeight: "bold"
-                    }}>{firstName} {maidenName} {lastName}</Text>
+                    <Text style={styles.profileData}>
+                        {firstName} {maidenName} {lastName}</Text>
                     <Text style={{ marginTop: 5 }}>Mobile {phone}</Text>
 
                     <View style={{
@@ -59,45 +38,30 @@ const DetailContact = ({ navigation, route }) => {
                         justifyContent: 'space-between', marginTop: 25,
                     }}>
                         <TouchableOpacity onPress={() => { }}
-                            style={{
-
-                                marginHorizontal: 30
-                            }}
+                            style={styles.topIcon}
                         >
-                            <Icon name="phone" size={30} color="black" />
+                            <Icon name="phone" size={30} color="#00804d" />
 
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => { }}
-                            style={{
-                                // flexDirection: 'row',
-                                // justifyContent: 'space-between',
-                                marginHorizontal: 30
-                            }}
+                            style={styles.topIcon}
                         >
-                            <Icon name="message" size={30} color="black" />
+                            <Icon name="message" size={30} color="lightblue" />
 
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => { }}
-                            style={{
-                                // flexDirection: 'row',
-                                // justifyContent: 'space-between',
-                                marginHorizontal: 30
-                            }}
+                            style={styles.topIcon}
                         >
                             <Icon name="video-call" size={30} color="black" />
 
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => { }}
-                            style={{
-                                // flexDirection: 'row',
-                                // justifyContent: 'space-between',
-                                marginHorizontal: 30
-                            }}
+                            style={styles.topIcon}
                         >
-                            <Icon name="email" size={30} color="black" />
+                            <Icon name="email" size={30} color="grey" />
 
                         </TouchableOpacity>
 
@@ -116,7 +80,7 @@ const DetailContact = ({ navigation, route }) => {
                     <View style={{ flexDirection: 'row', }}>
                         <Text style={{ fontSize: RFPercentage(2.1), fontWeight: 'bold', color: '#000' }}>{email}</Text>
                         <View style={{ marginStart: 180 }}>
-                            <Icon name="email" size={24} color="black" />
+                            <Icon name="email" size={24} color="grey" />
                         </View>
                     </View>
                 </View>
@@ -149,6 +113,50 @@ const DetailContact = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
+            
+
+            <View>
+    
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        Alert.alert('Modal has been closed.');
+        setModalVisible(!modalVisible);
+        // setModalVisible(false)
+        setModalVisible(true);
+      }}>
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalTitleText}>Alert</Text>
+          <Text style={styles.modalMessageText}>Do you To Edit Contact?</Text>
+          <View style={styles.insideButton}>
+          <View>
+          <TouchableOpacity
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setModalVisible(!modalVisible)}>
+            <Text style={styles.textStyleCancel}>Cancel</Text>
+          </TouchableOpacity>
+          </View>
+          <View>
+          <TouchableOpacity
+          
+            style={[styles.button, styles.buttonContinue]}
+            // onPress={() => {
+            //   navigation.navigate('Second', { first_name, last_name, email, avatar });
+            //   // ('One', { item })
+            // }}
+            >
+            <Text style={styles.textStyleCancel}>Continue</Text>
+          </TouchableOpacity>
+          </View>
+          </View>
+        </View>
+      </View>
+    </Modal>
+
+            <View>
             <View style={{
                 flexDirection: 'row',
                 margin: 25,
@@ -157,55 +165,142 @@ const DetailContact = ({ navigation, route }) => {
             }}>
                 <TouchableOpacity
                     onPress={() => { }}
-                    style={{
-                        // marginHorizontal: 22,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
+                    style={styles.bottomIcon}
                 >
                     <Icon name="star-outline" size={26} color="black" />
                     <Text>Favourites</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => { }}
-                    style={{
-                        // marginHorizontal: 15,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
+                    onPress={() => setModalVisible(true)}
+                    style={styles.bottomIcon}
                 >
                     <Icon name="edit" size={26} color="black" />
                     <Text>Edit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => { }}
-                    style={{
-                        // marginHorizontal: 38,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
+                    style={styles.bottomIcon}
                 >
                     <Icon name="share" size={26} color="black" />
                     <Text>Share</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => { }}
-                    style={{
-                        // marginHorizontal: 30,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
+                    style={styles.bottomIcon}
                 >
                     <Icon name="more-vert" size={26} color="black" />
                     <Text>More</Text>
                 </TouchableOpacity>
             </View>
+
+            </View>
+
+  </View>
         </View>
     );
 };
 
 export default DetailContact;
+
+
+
+const styles = StyleSheet.create({
+    profileData: {
+        fontSize: RFPercentage(2.5),
+        color: '#000',
+        textAlign: 'center',
+        marginTop: -15,
+    },
+    profile: {
+        width: 100,
+        height: 100,
+        alignSelf: 'center',
+        marginTop: -130,
+        borderColor: 'black',
+        borderRadius: 100,
+        borderWidth: 0.1,
+    },
+    topIcon:{
+        marginHorizontal: 30,
+    },
+    bottomIcon: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    
+
+
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+      },
+      modalView: {
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 30,
+        paddingBottom:2,
+        paddingVertical:30,
+        paddingHorizontal:30,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+      },
+
+      buttonOpen: {
+        marginTop:100,
+      },
+      buttonClose: {
+        marginTop:8,
+        
+        borderRadius:10,
+        padding:8,
+        marginRight:60,
+      },
+      modalMessageText:{
+        color: 'black',
+        fontWeight: 'bold',
+      },
+      buttonContinue:{
+        marginTop:8,
+        
+        borderRadius:10,
+        padding:8,
+      },
+      textStyle: {
+        color: 'black',
+        marginBottom:10,
+        fontSize:25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      modalTitleText: {
+        marginBottom: 15,
+        marginTop:-28,
+        textAlign: 'center',
+        fontSize:18,
+        fontWeight: 'bold',
+        color: 'black',
+      },
+      textStyleCancel:{
+        color: '#2196F3',
+        fontSize:15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      insideButton:{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            marginTop:30,
+      },
+
+});
