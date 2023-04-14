@@ -6,7 +6,8 @@
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useState } from 'react';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 const DetailContact = ({ navigation, route }) => {
     const { firstName, lastName, email, image, maidenName, phone } = route.params.item;
@@ -17,7 +18,8 @@ const DetailContact = ({ navigation, route }) => {
                 <View style={{
                     backgroundColor: 'white',
                     borderRadius: 20,
-                    padding: 70,
+                    padding: 65,
+                    paddingBottom:25,
                     marginTop: 90,
                     alignItems: 'center',
                     // shadowColor: '#000',
@@ -48,21 +50,65 @@ const DetailContact = ({ navigation, route }) => {
                         marginTop: -15,
                         // fontWeight: "bold"
                     }}>{firstName} {maidenName} {lastName}</Text>
-                    <Text>Mobile {phone}</Text>
-                    <View>
-          <TouchableOpacity onPress={() => { }}>
-            <Icon name="phone-call" size={30} color="#ffd369" />
-          </TouchableOpacity>
-          {/* <Icon name="phone" size={30} color="#000"/> */}
-          </View>
+                    <Text style={{marginTop:5}}>Mobile {phone}</Text>
+
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between', marginTop:25,
+                    }}>
+                        <TouchableOpacity onPress={() => { }}
+                        style={{
+                            // flexDirection: 'row',
+                            // justifyContent: 'space-between',
+                            marginHorizontal: 30
+                        }}
+                        >
+                            <Icon name="phone" size={24} color="black" />
+
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => { }}
+                        style={{
+                            // flexDirection: 'row',
+                            // justifyContent: 'space-between',
+                            marginHorizontal: 30
+                        }}
+                        >
+                            <Icon name="message" size={24} color="black" />
+
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => { }}
+                        style={{
+                            // flexDirection: 'row',
+                            // justifyContent: 'space-between',
+                            marginHorizontal: 30
+                        }}
+                        >
+                            <Icon name="video-call" size={24} color="black" />
+
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => { }}
+                        style={{
+                            // flexDirection: 'row',
+                            // justifyContent: 'space-between',
+                            marginHorizontal: 30
+                        }}
+                        >
+                            <Icon name="email" size={24} color="black" />
+
+                        </TouchableOpacity>
+
+                    </View>
                 </View>
                 <View style={{
                     backgroundColor: 'white',
                     borderRadius: 20,
-                    padding: 30,
+                    padding: 25,
                     borderColor: '#ccc',
-                    marginTop: 90,
-                    alignItems: 'center',
+                    marginTop: 20,
+                    // alignItems: 'center',
                     // shadowColor: '#000',
                     // shadowOffset: {
                     //     width: 0,
@@ -72,7 +118,15 @@ const DetailContact = ({ navigation, route }) => {
                     //   shadowRadius: 4,
                     //   elevation: 1,
                 }}>
-                    <Text>Hello</Text>
+                    <Text
+                    style={{marginTop:-15, fontSize:RFPercentage(1.5), color:'#000'}}
+                    >Home</Text>
+                    <View style={{flexDirection:'row'}}>
+                    <Text style={{fontSize:RFPercentage(2.1), fontWeight: 'bold', color:'#000'}}>{email}</Text>
+                    <View style={{marginRight:0}}>
+                    <Icon name="email" size={24} color="black" marginHorizontal={100} />
+                    </View>
+                    </View>
                 </View>
             </View>
         </View>
