@@ -7,11 +7,13 @@ import { Text, View, Image, TouchableOpacity, StyleSheet, Alert, Modal } from 'r
 import { useState } from 'react';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const DetailContact = ({ navigation, route }) => {
     const { firstName, lastName, email, image, maidenName, phone } = route.params.item;
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisibleShare, setModalVisibleShare] = useState(false);
     return (
         <View style={{ flex: 1, backgroundColor: '#f2f2f2' }}>
             
@@ -73,13 +75,16 @@ const DetailContact = ({ navigation, route }) => {
                     padding: 25,
                     borderColor: '#ccc',
                     marginTop: 20,
+                    height: hp('9%'),
+                    width: wp('100%') 
                 }}>
                     <Text
                         style={{ marginTop: -15, fontSize: RFPercentage(1.5), color: '#000' }}
-                    >Home</Text>
+                    >Email</Text>
                     <View style={{ flexDirection: 'row', }}>
-                        <Text style={{ fontSize: RFPercentage(2.1), fontWeight: 'bold', color: '#000' }}>{email}</Text>
-                        <View style={{ marginStart: 180 }}>
+                        <Text style={{ fontSize: RFPercentage(2), fontWeight: 'bold', color: '#000' }}>{email}</Text>
+                        <View style={{ flex:1, marginStart: 170, height: hp('9%'),
+                    width: wp('100%') }}>
                             <Icon name="email" size={24} color="grey" />
                         </View>
                     </View>
@@ -113,10 +118,7 @@ const DetailContact = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            
-
             <View>
-    
     <Modal
       animationType="slide"
       transparent={true}
@@ -143,10 +145,9 @@ const DetailContact = ({ navigation, route }) => {
           <TouchableOpacity
           
             style={[styles.button, styles.buttonContinue]}
-            // onPress={() => {
-            //   navigation.navigate('Second', { first_name, last_name, email, avatar });
-            //   // ('One', { item })
-            // }}
+            onPress={() => {
+              navigation.navigate('Edit');
+            }}
             >
             <Text style={styles.textStyleCancel}>Continue</Text>
           </TouchableOpacity>
@@ -155,13 +156,58 @@ const DetailContact = ({ navigation, route }) => {
         </View>
       </View>
     </Modal>
+    
+    <View>
+    
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisibleShare}
+      onRequestClose={() => {
+        Alert.alert('Modal has been closed.');
+        setModalVisibleShare(!modalVisibleShare);
+        // setModalVisible(false)
+        setModalVisibleShare(true);
+      }}>
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          {/* <Text style={styles.modalTitleText}>Alert</Text> */}
+          <Text style={styles.modalMessageText}>Comming Soon</Text>
+          <View style={styles.insideButton}>
+          <View>
+          <TouchableOpacity
+            style={[styles.button, styles.buttonClose,]}
+            onPress={() => setModalVisibleShare(!modalVisibleShare)}>
+            <Text style={styles.textStyleCancel}>Cancel</Text>
+          </TouchableOpacity>
+          </View>
+          <View>
+          {/* <TouchableOpacity
+          
+            style={[styles.button, styles.buttonContinue]}
+            // onPress={() => {
+            //   navigation.navigate('Second', { first_name, last_name, email, avatar });
+            //   // ('One', { item })
+            // }}
+            >
+            <Text style={styles.textStyleCancel}>Continue</Text>
+          </TouchableOpacity> */}
+          </View>
+          </View>
+        </View>
+      </View>
+    </Modal>
 
-            <View>
+            <View style={{flex:1}}>
             <View style={{
+                // flex:2,
                 flexDirection: 'row',
                 margin: 25,
                 justifyContent: 'space-between',
-                marginVertical: 160
+                marginBottom:-50,
+                marginVertical: 140, 
+                height: hp('4%'),
+                width: wp('88%')
             }}>
                 <TouchableOpacity
                     onPress={() => { }}
@@ -178,7 +224,7 @@ const DetailContact = ({ navigation, route }) => {
                     <Text>Edit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={() => setModalVisibleShare(true)}
                     style={styles.bottomIcon}
                 >
                     <Icon name="share" size={26} color="black" />
@@ -194,7 +240,7 @@ const DetailContact = ({ navigation, route }) => {
             </View>
 
             </View>
-
+            </View>
   </View>
         </View>
     );
@@ -224,6 +270,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
     },
     bottomIcon: {
+        // flex:1,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -260,6 +307,7 @@ const styles = StyleSheet.create({
       },
       buttonClose: {
         marginTop:8,
+        // alignContent:'center',
         
         borderRadius:10,
         padding:8,
