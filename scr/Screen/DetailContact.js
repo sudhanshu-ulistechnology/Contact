@@ -83,7 +83,7 @@ const DetailContact = ({ navigation, route }) => {
                     <Text
                         style={{ marginTop: -15, fontSize: RFPercentage(1.5), color: '#000' }}
                     >Email</Text>
-                    <View style={{ flex: 1, flexDirection: 'row', }}>
+                    <View style={{ flex: 1, flexDirection: 'row'}}>
                         <Text style={{ fontSize: RFPercentage(2), fontWeight: 'bold', color: '#000' }}>{email}</Text>
                         <View style={{
                             flex: 1, marginStart: 170, height: hp('9%'),
@@ -207,28 +207,28 @@ const DetailContact = ({ navigation, route }) => {
                                 style={styles.bottomIcon}
                             >
                                 <Icon name="star-outline" size={26} color="black" />
-                                <Text>Favourites</Text>
+                                <Text style={styles.bottomText}>Favourites</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => setModalVisible(true)}
                                 style={styles.bottomIcon}
                             >
                                 <Icon name="edit" size={26} color="black" />
-                                <Text>Edit</Text>
+                                <Text style={styles.bottomText}>Edit</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => setModalVisibleShare(true)}
                                 style={styles.bottomIcon}
                             >
                                 <Icon name="share" size={26} color="black" />
-                                <Text>Share</Text>
+                                <Text style={styles.bottomText}>Share</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => { }}
                                 style={styles.bottomIcon}
                             >
                                 <Icon name="more-vert" size={26} color="black" />
-                                <Text>More</Text>
+                                <Text style={styles.bottomText}>More</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -292,6 +292,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+    },
+    bottomText:{
+        color:'#000'
     },
 
     buttonOpen: {
