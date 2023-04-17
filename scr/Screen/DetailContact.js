@@ -3,7 +3,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Text, View, Image, TouchableOpacity, StyleSheet, Alert, Modal } from 'react-native';
+import { Text, 
+         View, 
+         Image, 
+         TouchableOpacity, 
+         StyleSheet, 
+         Alert, 
+         Modal } from 'react-native';
 import { useState } from 'react';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -35,11 +41,15 @@ const DetailContact = ({ navigation, route }) => {
                         {firstName} {maidenName} {lastName}</Text>
                         <View style={{ flexDirection:'row' }}>
                     <Text style={{ marginTop: 3, color:'#000'}}>Mobile</Text>
-                    <Text style={{marginTop:2, marginLeft:15, fontWeight:'bold', color:'#000'}}>{phone}</Text>
+                    <Text style={{marginTop:2, 
+                                  marginLeft:15, 
+                                  fontWeight:'bold', 
+                                  color:'#000'}}>{phone}</Text>
                         </View>
                     <View style={{
                         flexDirection: 'row',
-                        justifyContent: 'space-between', marginTop: 25,
+                        justifyContent: 'space-between', 
+                        marginTop: 25,
                     }}>
                         <TouchableOpacity onPress={() => { }}
                             style={styles.topIcon}
@@ -81,12 +91,17 @@ const DetailContact = ({ navigation, route }) => {
                     width: wp('100%')
                 }}>
                     <Text
-                        style={{ marginTop: -15, fontSize: RFPercentage(1.5), color: '#000' }}
+                        style={{ marginTop: -15, 
+                                 fontSize: RFPercentage(1.5), 
+                                 color: '#000' }}
                     >Email</Text>
                     <View style={{ flex: 1, flexDirection: 'row'}}>
-                        <Text style={{ fontSize: RFPercentage(2), fontWeight: 'bold', color: '#000' }}>{email}</Text>
+                        <Text style={{ fontSize: RFPercentage(2), 
+                                       fontWeight: 'bold', 
+                                       color: '#000' }}>{email}</Text>
                         <View style={{
-                            flex: 1, marginStart: 170, height: hp('9%'),
+                            flex: 1, marginStart: 170, 
+                            height: hp('9%'),
                             width: wp('100%')
                         }}>
                             <Icon name="email" size={24} color="grey" />
@@ -104,7 +119,9 @@ const DetailContact = ({ navigation, route }) => {
                             backgroundColor: '#DCDCDC',
                             marginTop: 20,
                         }}>
-                            <Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#000' }}>History</Text>
+                            <Text style={{ fontWeight: 'bold',
+                                           textAlign: 'center', 
+                                           color: '#000' }}>History</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -117,7 +134,9 @@ const DetailContact = ({ navigation, route }) => {
                             backgroundColor: '#DCDCDC',
                             marginTop: -50,
                         }}>
-                            <Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#000' }}>Storage locations</Text>
+                            <Text style={{ fontWeight: 'bold', 
+                                           textAlign: 'center', 
+                                           color: '#000' }}>Storage locations</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -191,7 +210,7 @@ const DetailContact = ({ navigation, route }) => {
                         </View>
                     </Modal>
 
-                    <View style={{ flex: 1 }}>
+                    {/* <View style={{ flex: 1 }}>
                         <View style={{
                             // flex:2,
                             flexDirection: 'row',
@@ -231,7 +250,7 @@ const DetailContact = ({ navigation, route }) => {
                                 <Text style={styles.bottomText}>More</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </View> */}
                 </View>
             </View>
         </View>
